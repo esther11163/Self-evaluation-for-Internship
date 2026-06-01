@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>危欣｜实习期自我评价可视化展示</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #64748b;
+      --line: #dbe3ea;
+      --paper: #f7f9fb;
+      --white: #ffffff;
+      --blue: #1769aa;
+      --green: #20875a;
+      --amber: #b56a16;
+      --red: #b73b3b;
+      --cyan: #0f8b8d;
+      --shadow: 0 16px 36px rgba(23, 32, 42, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+      background: var(--paper);
+      line-height: 1.65;
+    }
+
+    .page {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 28px 28px 56px;
+    }
+
+    .hero {
+      min-height: 430px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(330px, 0.88fr);
+      gap: 28px;
+      align-items: stretch;
+      padding: 34px;
+      color: #ffffff;
+      background:
+        linear-gradient(115deg, rgba(15, 56, 88, 0.96), rgba(23, 105, 170, 0.90) 52%, rgba(32, 135, 90, 0.88)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.10) 0 1px, transparent 1px 48px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 48px);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      margin: 14px 0 12px;
+      font-size: 44px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      font-size: 14px;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 3px;
+      background: #7ee0b2;
+      border-radius: 99px;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      margin: 0;
+      font-size: 19px;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .identity {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .identity span {
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.10);
+      font-size: 14px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-panel {
+      display: grid;
+      align-content: center;
+      gap: 14px;
+      padding: 26px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-panel h2 {
+      margin: 0;
+      font-size: 18px;
+      color: rgba(255,255,255,0.95);
+    }
+
+    .hero-panel p {
+      margin: 0;
+      color: rgba(255,255,255,0.84);
+      font-size: 15px;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .hero-metric {
+      min-height: 106px;
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.94);
+      color: var(--ink);
+    }
+
+    .hero-metric strong {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+      color: var(--blue);
+    }
+
+    .hero-metric span {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    section {
+      margin-top: 24px;
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 22px rgba(23, 32, 42, 0.05);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 20px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      max-width: 620px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .path-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .path-card {
+      position: relative;
+      min-height: 230px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      overflow: hidden;
+    }
+
+    .path-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--blue);
+    }
+
+    .path-card.current::before {
+      background: var(--green);
+    }
+
+    .path-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .path-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .path-meta span {
+      padding: 5px 9px;
+      border-radius: 6px;
+      color: #244056;
+      background: #eef5fb;
+      font-size: 13px;
+    }
+
+    .path-card p {
+      margin: 0 0 14px;
+      color: #405064;
+      font-size: 15px;
+    }
+
+    .path-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid #b8d5eb;
+      border-radius: 6px;
+      color: var(--blue);
+      background: #eef5fb;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .path-points {
+      margin: 0;
+      padding-left: 20px;
+      color: #405064;
+      font-size: 15px;
+    }
+
+    .path-points li {
+      margin: 7px 0;
+    }
+
+    .metric-card {
+      min-height: 148px;
+      padding: 18px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fbfdff;
+    }
+
+    .metric-card .label {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .metric-card .num {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-top: 10px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .metric-card .num strong {
+      font-size: 38px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .metric-card .num span {
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .metric-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .metric-card.blue {
+      border-top: 4px solid var(--blue);
+    }
+
+    .metric-card.green {
+      border-top: 4px solid var(--green);
+    }
+
+    .metric-card.amber {
+      border-top: 4px solid var(--amber);
+    }
+
+    .metric-card.cyan {
+      border-top: 4px solid var(--cyan);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .work-card {
+      min-height: 208px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .work-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.28;
+    }
+
+    .dot {
+      flex: 0 0 auto;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .work-card:nth-child(2) .dot,
+    .work-card:nth-child(5) .dot {
+      background: var(--green);
+    }
+
+    .work-card:nth-child(3) .dot {
+      background: var(--amber);
+    }
+
+    .work-card:nth-child(4) .dot,
+    .work-card:nth-child(6) .dot {
+      background: var(--cyan);
+    }
+
+    .work-card p {
+      margin: 0;
+      color: #405064;
+      font-size: 15px;
+    }
+
+    .impact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .before-after {
+      display: grid;
+      gap: 14px;
+    }
+
+    .state {
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fbfdff;
+    }
+
+    .state h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .state.before {
+      border-left: 5px solid var(--red);
+    }
+
+    .state.after {
+      border-left: 5px solid var(--green);
+    }
+
+    .state ul,
+    .case-list,
+    .plan-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .state li,
+    .case-list li,
+    .plan-list li {
+      margin: 8px 0;
+      color: #405064;
+    }
+
+    .chart {
+      min-height: 100%;
+      padding: 22px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #fbfdff, #ffffff);
+    }
+
+    .chart h3 {
+      margin: 0 0 18px;
+      font-size: 18px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 108px minmax(0, 1fr) 70px;
+      gap: 12px;
+      align-items: center;
+      margin: 15px 0;
+      font-size: 14px;
+    }
+
+    .bar-track {
+      height: 14px;
+      background: #e9eef3;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      border-radius: 99px;
+      background: var(--blue);
+    }
+
+    .bar.green {
+      background: var(--green);
+    }
+
+    .bar.amber {
+      background: var(--amber);
+    }
+
+    .bar.cyan {
+      background: var(--cyan);
+    }
+
+    .case {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .case-badge {
+      position: sticky;
+      top: 24px;
+      padding: 24px;
+      border-radius: 8px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+    }
+
+    .case-badge strong {
+      display: block;
+      font-size: 42px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .case-badge span {
+      color: rgba(255,255,255,0.86);
+      font-size: 15px;
+    }
+
+    .case-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .flow-step {
+      min-height: 128px;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fbfdff;
+    }
+
+    .flow-step b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+    }
+
+    .flow-step span {
+      display: block;
+      color: #405064;
+      font-size: 14px;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .tag {
+      padding: 8px 11px;
+      border-radius: 6px;
+      color: #244056;
+      background: #eef5fb;
+      border: 1px solid #d7e6f2;
+      font-size: 14px;
+    }
+
+    .capability {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+
+    .capability h3 {
+      margin: 0 0 14px;
+      font-size: 18px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .evidence-card {
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fbfdff;
+    }
+
+    .evidence-card.wide {
+      grid-column: span 2;
+    }
+
+    .evidence-shot {
+      height: 210px;
+      display: grid;
+      place-items: center;
+      background: #edf3f8;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .evidence-card.wide .evidence-shot {
+      height: 320px;
+    }
+
+    .evidence-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #ffffff;
+    }
+
+    .shot-placeholder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: var(--muted);
+      text-align: center;
+      border: 1px dashed #b7c6d4;
+      background: #f7fafc;
+      font-size: 14px;
+    }
+
+    .evidence-body {
+      padding: 16px;
+    }
+
+    .evidence-body b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 17px;
+      color: var(--ink);
+    }
+
+    .evidence-body p {
+      margin: 0;
+      color: #405064;
+      font-size: 14px;
+    }
+
+    .evidence-showcase {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.5fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .evidence-main {
+      display: flex;
+      flex-direction: column;
+      min-height: 650px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .evidence-stage {
+      position: relative;
+      flex: 1;
+      min-height: 510px;
+      display: grid;
+      place-items: center;
+      background: #0d1724;
+    }
+
+    .evidence-stage img {
+      width: 100%;
+      height: 100%;
+      max-height: 620px;
+      object-fit: contain;
+      background: #0d1724;
+    }
+
+    .evidence-nav {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .evidence-nav button,
+    .thumb-strip button,
+    .evidence-list button {
+      font: inherit;
+    }
+
+    .evidence-nav button {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 8px;
+      color: #ffffff;
+      background: rgba(13, 23, 36, 0.72);
+      cursor: pointer;
+    }
+
+    .evidence-caption {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .evidence-caption h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .evidence-caption p {
+      margin: 0;
+      color: #405064;
+      font-size: 14px;
+    }
+
+    .slide-count {
+      min-width: 54px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: var(--blue);
+      background: #eef5fb;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .evidence-side {
+      display: flex;
+      flex-direction: column;
+      min-height: 650px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fbfdff;
+    }
+
+    .evidence-side-head {
+      padding: 18px 18px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .evidence-side-head h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .evidence-side-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .evidence-list {
+      flex: 1;
+      overflow: auto;
+      padding: 10px;
+    }
+
+    .evidence-list button {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      margin: 0 0 10px;
+      padding: 10px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .evidence-list button.is-active {
+      border-color: #b8d5eb;
+      background: #eef5fb;
+    }
+
+    .evidence-list img {
+      width: 86px;
+      height: 54px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #ffffff;
+    }
+
+    .evidence-list b {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .evidence-list span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .thumb-strip {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .thumb-strip button {
+      height: 78px;
+      padding: 0;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      background: #edf3f8;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .thumb-strip button.is-active {
+      border-color: var(--blue);
+    }
+
+    .thumb-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .time-card {
+      min-height: 170px;
+      padding: 18px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      position: relative;
+    }
+
+    .time-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 18px;
+      right: 18px;
+      height: 4px;
+      background: var(--green);
+      border-radius: 0 0 6px 6px;
+    }
+
+    .time-card h3 {
+      margin: 10px 0 10px;
+      font-size: 17px;
+    }
+
+    .time-card p {
+      margin: 0;
+      color: #405064;
+      font-size: 14px;
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      padding: 24px 28px;
+      color: #ffffff;
+      background: #17202a;
+      border-radius: 8px;
+    }
+
+    .footer-note h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .footer-note p {
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .impact-layout,
+      .case,
+      .path-grid,
+      .skills {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-grid,
+      .timeline,
+      .case-flow,
+      .evidence-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .case-badge {
+        position: static;
+      }
+
+      .evidence-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .evidence-main,
+      .evidence-side {
+        min-height: auto;
+      }
+
+      .thumb-strip {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 14px;
+      }
+
+      .hero,
+      section,
+      .footer-note {
+        padding: 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      .hero-metrics,
+      .metric-grid,
+      .work-grid,
+      .timeline,
+      .case-flow,
+      .evidence-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .evidence-card.wide {
+        grid-column: span 1;
+      }
+
+      .evidence-card.wide .evidence-shot,
+      .evidence-shot {
+        height: 220px;
+      }
+
+      .evidence-stage {
+        min-height: 300px;
+      }
+
+      .evidence-caption {
+        grid-template-columns: 1fr;
+      }
+
+      .thumb-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+
+      .bar-row {
+        grid-template-columns: 86px minmax(0, 1fr) 50px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      .hero,
+      section,
+      .footer-note {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">实习期自我评价与转正价值证明</p>
+        <h2>危欣｜AIOps 技术服务部｜实习期总结</h2>
+        <p class="hero-subtitle">
+          在中广核智科2026年数智化运维管理平台建设项目中，围绕蓝鲸平台、CMDB、ITSM、APM、告警源插件和大屏数据源完成实际交付，形成从需求理解、接口联调、脚本开发到问题闭环的项目实践能力。
+        </p>
+        <div class="identity">
+          <span>福建师范大学｜计算机科学与技术｜本科</span>
+          <span>实施运维工程师</span>
+          <span>累计实习约6个月</span>
+          <span>中广核项目现场：2026.04.13 - 至今</span>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="核心价值摘要">
+        <h2>核心结论</h2>
+        <p>实习期间已参与真实客户现场交付，不仅完成学习适应，也产出了可复用的插件、脚本、数据对接和问题排查成果。</p>
+        <div class="hero-metrics">
+          <div class="hero-metric">
+            <strong>25+</strong>
+            <span>蓝鲸大屏数据源脚本/指标</span>
+          </div>
+          <div class="hero-metric">
+            <strong>3</strong>
+            <span>配置发现插件</span>
+          </div>
+          <div class="hero-metric">
+            <strong>数百</strong>
+            <span>CMDB模型实例自动化维护</span>
+          </div>
+          <div class="hero-metric">
+            <strong>20+</strong>
+            <span>关键系统拓扑关系排查覆盖</span>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <section aria-labelledby="path-title">
+      <div class="section-head">
+        <h2 id="path-title">项目实践路径</h2>
+        <p>福建移动项目沉淀平台认知与运维场景理解，中广核项目进一步形成可见交付成果。</p>
+      </div>
+      <div class="path-grid">
+        <article class="path-card">
+          <h3>福建移动维保项目</h3>
+          <div class="path-meta">
+            <span>2025.07 - 2025.10</span>
+            <span>福建团队</span>
+          </div>
+          <p>
+            该阶段主要沉淀蓝鲸平台使用、运维场景理解、需求梳理和项目协作经验，为后续在中广核现场承担插件开发、数据对接和问题排查打下基础。
+          </p>
+          <a class="path-link" href="https://docs.qq.com/mind/DQ2tkUm1kS1JhR2Jw?subId=rASxea&amp;mode=mind" target="_blank" rel="noopener noreferrer">
+            查看福建移动工作梳理
+          </a>
+        </article>
+
+        <article class="path-card current">
+          <h3>中广核项目：现场交付产出</h3>
+          <div class="path-meta">
+            <span>2026.04.13 - 2026.06.01</span>
+            <span>深圳团队</span>
+            <span>数智化运维管理平台建设</span>
+          </div>
+          <ul class="path-points">
+            <li>完成告警源插件、ITSM 辅助分析插件、配置发现插件等交付工作。</li>
+            <li>建设 25+ 个蓝鲸大屏数据源脚本/指标，支撑 IT 运维管理大屏展示。</li>
+            <li>围绕 20+ 个关键系统排查 CMDB 与听云关联关系，推动拓扑关系闭环。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="numbers-title">
+      <div class="section-head">
+        <h2 id="numbers-title">量化成果</h2>
+      </div>
+      <div class="metric-grid">
+        <div class="metric-card blue">
+          <div class="label">大屏数据源建设</div>
+          <div class="num"><strong>25+</strong><span>个</span></div>
+          <p>支撑 IT 运维管理大屏展示 CMDB、ITSM、健康状态、告警等指标。</p>
+        </div>
+        <div class="metric-card green">
+          <div class="label">配置发现覆盖</div>
+          <div class="num"><strong>3</strong><span>类资源</span></div>
+          <p>3类听云apm数据，支持从三方系统获取数据并自动录入 CMDB。</p>
+        </div>
+        <div class="metric-card amber">
+          <div class="label">实例自动化维护</div>
+          <div class="num"><strong>数百</strong><span>条实例</span></div>
+          <p>修复唯一性判断逻辑后，减少人工录入和数据维护成本。</p>
+        </div>
+        <div class="metric-card cyan">
+          <div class="label">拓扑排查范围</div>
+          <div class="num"><strong>20+</strong><span>关键系统</span></div>
+          <p>围绕 CMDB 与听云同步关系，定位并推动 1 类核心关联关系闭环。</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 id="work-title">主要贡献</h2>
+        <p>插件开发、数据对接、自动化维护和现场问题排查</p>
+      </div>
+      <div class="work-grid">
+        <article class="work-card">
+          <h3><span class="dot"></span>鲸眼 Zabbix 告警源插件</h3>
+          <p>完成插件修改，新增指标信息功能，使用户可以查看当前告警对应指标的历史数据，辅助告警分析和定位。</p>
+        </article>
+        <article class="work-card">
+          <h3><span class="dot"></span>鲸眼 ITSM 辅助分析插件</h3>
+          <p>通过告警产生的业务 ID，关联近 30 天变更工单，为故障分析增加变更维度，提升排查线索完整性。</p>
+        </article>
+        <article class="work-card">
+          <h3><span class="dot"></span>配置发现插件改造</h3>
+          <p>针对数据库、中间件资源完善自动发现逻辑，修复实例唯一性判断问题，推动资源录入自动化。</p>
+        </article>
+        <article class="work-card">
+          <h3><span class="dot"></span>听云 APM 数据同步</h3>
+          <p>对接听云系统，录入 APM 实例，并将业务、APM 应用、APM 实例等关系同步至 CMDB。</p>
+        </article>
+        <article class="work-card">
+          <h3><span class="dot"></span>蓝鲸大屏数据源</h3>
+          <p>通过 API 获取和数据库查询等方式开发 25+ 个数据源脚本/指标，支撑项目展示与运维态势呈现。</p>
+        </article>
+        <article class="work-card">
+          <h3><span class="dot"></span>现场问题排查闭环</h3>
+          <p>围绕 CMDB 拓扑关联缺失、接口字段不完整、实例无法匹配等问题进行排查，并形成处理方案。</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="impact-title">
+      <div class="section-head">
+        <h2 id="impact-title">价值转化</h2>
+        <p>从“人工维护”转向“脚本同步 + 周期执行 + 数据可视化”，提高交付效率和数据可靠性。</p>
+      </div>
+      <div class="impact-layout">
+        <div class="before-after">
+          <div class="state before">
+            <h3>优化前</h3>
+            <ul>
+              <li>CMDB 关联关系需要人工维护，更新滞后。</li>
+              <li>配置发现脚本存在唯一性判断问题，部分实例需要手动录入。</li>
+              <li>第三方系统字段缺失时，拓扑关系难以直接定位原因。</li>
+            </ul>
+          </div>
+          <div class="state after">
+            <h3>优化后</h3>
+            <ul>
+              <li>听云数据可按周同步至 CMDB，支撑关联关系自动化维护。</li>
+              <li>中间件、数据库等 8 类资源覆盖自动发现，涉及数百条实例。</li>
+              <li>大屏数据源支撑关键指标展示，帮助项目直观呈现运维现状。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="chart" aria-label="成果覆盖条形图">
+          <h3>交付覆盖度</h3>
+          <div class="bar-row">
+            <span>大屏指标</span>
+            <div class="bar-track"><div class="bar" style="width: 94%;"></div></div>
+            <b>25+</b>
+          </div>
+          <div class="bar-row">
+            <span>资源类型</span>
+            <div class="bar-track"><div class="bar green" style="width: 60%;"></div></div>
+            <b>10+</b>
+          </div>
+          <div class="bar-row">
+            <span>实例规模</span>
+            <div class="bar-track"><div class="bar amber" style="width: 92%;"></div></div>
+            <b>数百</b>
+          </div>
+          <div class="bar-row">
+            <span>关键系统</span>
+            <div class="bar-track"><div class="bar cyan" style="width: 88%;"></div></div>
+            <b>20+</b>
+          </div>
+          <p style="margin: 22px 0 0; color: var(--muted); font-size: 14px;">
+            这些成果共同支撑了中广核项目中的 CMDB 数据质量、拓扑关系建设、IT 运维管理大屏展示和现场问题闭环。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="case-title">
+      <div class="section-head">
+        <h2 id="case-title">关键案例：鲸眼拓扑关联关系缺失排查</h2>
+      </div>
+      <div class="case">
+        <aside class="case-badge">
+          <strong>20+</strong>
+          <span>关键系统关联关系逐项梳理，定位 CMDB、听云接口和实例匹配问题。</span>
+        </aside>
+        <div>
+          <ul class="case-list">
+            <li>通过 Excel 梳理 20 多个关键系统的关联关系缺失情况，建立排查清单。</li>
+            <li>判断问题来源：同步脚本逻辑、CMDB 数据准确性、实例业务归属、听云接口字段完整性。</li>
+            <li>定位中间件接口返回类型不完整、应用实例缺少 IP、数据库实例虚 IP 与真实 IP 不一致等问题。</li>
+            <li>提出处理方案：通过 APM 实例 IP 建立中间件与应用关系，推动听云侧补充数据库真实主机 IP 字段。</li>
+          </ul>
+          <div class="case-flow">
+            <div class="flow-step">
+              <b>1. 梳理现状</b>
+              <span>按关键系统统计缺失关系，形成问题清单。</span>
+            </div>
+            <div class="flow-step">
+              <b>2. 定位来源</b>
+              <span>区分脚本、CMDB、接口、实例匹配等原因。</span>
+            </div>
+            <div class="flow-step">
+              <b>3. 设计方案</b>
+              <span>按不同数据问题给出对应处理路径。</span>
+            </div>
+            <div class="flow-step">
+              <b>4. 推动闭环</b>
+              <span>与相关人员沟通字段补充和后续同步逻辑。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="evidence-title">
+      <div class="section-head">
+        <h2 id="evidence-title">实际产出截图</h2>
+      </div>
+      <div class="evidence-showcase" data-evidence>
+        <article class="evidence-main">
+          <div class="evidence-stage">
+            <img data-main-image src="成果截图/运维监控大屏成果截图.png" alt="IT 运维监控大屏">
+            <div class="evidence-nav">
+              <button type="button" data-prev aria-label="上一张">&lt;</button>
+              <button type="button" data-next aria-label="下一张">&gt;</button>
+            </div>
+          </div>
+          <div class="evidence-caption">
+            <div>
+              <h3 data-main-title>IT 运维监控大屏</h3>
+              <p data-main-desc>支撑 CMDB 资源总览、系统健康状态、告警统计、工单趋势等指标集中展示，体现大屏数据源建设成果。</p>
+            </div>
+            <div class="slide-count"><span data-current>1</span>/7</div>
+          </div>
+        </article>
+
+        <aside class="evidence-side">
+          <div class="evidence-side-head">
+            <h3>成果清单</h3>
+            <p>插件、数据源、CMDB 关联和拓扑展示均来自项目现场实际产出。</p>
+          </div>
+          <div class="evidence-list" data-slide-list>
+            <button type="button" class="is-active" data-index="0" data-src="成果截图/运维监控大屏成果截图.png" data-title="IT 运维监控大屏" data-desc="支撑 CMDB 资源总览、系统健康状态、告警统计、工单趋势等指标集中展示，体现大屏数据源建设成果。">
+              <img src="成果截图/运维监控大屏成果截图.png" alt="">
+              <span><b>IT 运维监控大屏</b>大屏数据源最终展示效果</span>
+            </button>
+            <button type="button" data-index="1" data-src="成果截图/蓝鲸大屏数据源管理.png" data-title="蓝鲸大屏数据源管理" data-desc="页面展示已创建的数据源数量、数据源类型和运行状态，用于证明 25+ 个数据源脚本/指标的实际交付。">
+              <img src="成果截图/蓝鲸大屏数据源管理.png" alt="">
+              <span><b>蓝鲸大屏数据源管理</b>25+ 个数据源脚本/指标</span>
+            </button>
+            <button type="button" data-index="2" data-src="成果截图/Zabbix告警源指标信息.png" data-title="Zabbix 告警源指标信息" data-desc="新增指标信息功能后，可在告警详情中查看指标趋势数据，辅助判断告警发生前后的指标变化。">
+              <img src="成果截图/Zabbix告警源指标信息.png" alt="">
+              <span><b>Zabbix 告警源指标信息</b>告警详情新增指标趋势</span>
+            </button>
+            <button type="button" data-index="3" data-src="成果截图/ITSM辅助分析插件.png" data-title="ITSM 辅助分析插件" data-desc="通过告警所属业务关联近 30 天变更工单，为告警根因分析补充变更视角。">
+              <img src="成果截图/ITSM辅助分析插件.png" alt="">
+              <span><b>ITSM 辅助分析插件</b>关联近 30 天变更工单</span>
+            </button>
+            <button type="button" data-index="4" data-src="成果截图/配置发现插件.png" data-title="配置发现插件" data-desc="覆盖 APM、中间件、数据库、网络设备等资源发现场景，支撑实例自动录入 CMDB。">
+              <img src="成果截图/配置发现插件.png" alt="">
+              <span><b>配置发现插件</b>资源发现与实例录入</span>
+            </button>
+            <button type="button" data-index="5" data-src="成果截图/Nginx实例唯一性.png" data-title="配置发现唯一性逻辑" data-desc="将实例唯一性调整为 IP + 端口，支撑中间件、数据库实例与告警匹配对象的一致性维护。">
+              <img src="成果截图/Nginx实例唯一性.png" alt="">
+              <span><b>配置发现唯一性逻辑</b>IP + 端口唯一匹配</span>
+            </button>
+            <button type="button" data-index="6" data-src="成果截图/鲸眼拓扑聚合展示.png" data-title="鲸眼拓扑聚合展示" data-desc="通过 CMDB 同步 APM 应用和 APM 实例关联关系，支撑鲸眼侧业务拓扑聚合展示。">
+              <img src="成果截图/鲸眼拓扑聚合展示.png" alt="">
+              <span><b>鲸眼拓扑聚合展示</b>APM 应用与实例聚合展示</span>
+            </button>
+          </div>
+        </aside>
+
+        <div class="thumb-strip" data-thumb-strip aria-label="截图缩略图导航">
+          <button type="button" class="is-active" data-index="0"><img src="成果截图/运维监控大屏成果截图.png" alt="IT 运维监控大屏"></button>
+          <button type="button" data-index="1"><img src="成果截图/蓝鲸大屏数据源管理.png" alt="蓝鲸大屏数据源管理"></button>
+          <button type="button" data-index="2"><img src="成果截图/Zabbix告警源指标信息.png" alt="Zabbix 告警源指标信息"></button>
+          <button type="button" data-index="3"><img src="成果截图/ITSM辅助分析插件.png" alt="ITSM 辅助分析插件"></button>
+          <button type="button" data-index="4"><img src="成果截图/配置发现插件.png" alt="配置发现插件"></button>
+          <button type="button" data-index="5"><img src="成果截图/Nginx实例唯一性.png" alt="Nginx 实例唯一性"></button>
+          <button type="button" data-index="6"><img src="成果截图/鲸眼拓扑聚合展示.png" alt="鲸眼拓扑聚合展示"></button>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="skills-title">
+      <div class="section-head">
+        <h2 id="skills-title">能力沉淀</h2>
+        <p>从平台熟悉、脚本开发、接口联调到现场沟通，逐步具备独立承担运维开发任务的基础。</p>
+      </div>
+      <div class="skills">
+        <div class="capability">
+          <h3>技术能力</h3>
+          <div class="tag-cloud">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">REST API</span>
+            <span class="tag">蓝鲸 PaaS</span>
+            <span class="tag">蓝鲸大屏</span>
+            <span class="tag">ITSM</span>
+            <span class="tag">CMDB</span>
+            <span class="tag">APM</span>
+            <span class="tag">监控告警</span>
+            <span class="tag">接口联调</span>
+            <span class="tag">数据清洗</span>
+            <span class="tag">插件开发</span>
+          </div>
+        </div>
+        <div class="capability">
+          <h3>已能独立完成</h3>
+          <ul class="plan-list">
+            <li>编写蓝鲸大屏数据源脚本，完成 API/数据库数据对接。</li>
+            <li>分析接口返回异常，定位字段缺失、数据不一致、实例无法匹配等问题。</li>
+            <li>根据项目需求修改插件逻辑，并完成本地调试和现场验证。</li>
+            <li>与项目经理、产品、开发同事沟通需求、产品细节和问题反馈。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="plan-title">
+      <div class="section-head">
+        <h2 id="plan-title">转正后 3-6 个月成长计划</h2>
+        <p>继续强化蓝鲸平台底层、生产环境排障、插件规范沉淀和独立模块交付能力。</p>
+      </div>
+      <div class="timeline">
+        <article class="time-card">
+          <h3>深入平台机制</h3>
+          <p>补强蓝鲸平台底层机制、平台部署能力、后台服务与日志排查方法。</p>
+        </article>
+        <article class="time-card">
+          <h3>沉淀开发规范</h3>
+          <p>整理告警源插件、配置发现插件、大屏数据源开发方法，形成可复用清单。</p>
+        </article>
+        <article class="time-card">
+          <h3>独立负责模块</h3>
+          <p>从需求沟通、方案设计、开发调试、上线验证到问题闭环完整承担一个模块。</p>
+        </article>
+        <article class="time-card">
+          <h3>参与核心交付</h3>
+          <p>继续积累 AIOps、CMDB、APM、ITSM、监控告警和自动化运维项目经验。</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer-note">
+      <h2>总结</h2>
+      <p>
+        实习期间，我已经从蓝鲸平台学习阶段进入真实项目交付阶段，能够围绕客户现场需求完成插件开发、数据对接、自动化脚本和问题排查。后续希望继续在 AIOps 运维开发、现场交付开发方向深耕，为团队提供更稳定、可复用、可持续的交付价值。
+      </p>
+    </footer>
+  </main>
+  <script>
+    (() => {
+      const root = document.querySelector("[data-evidence]");
+      if (!root) return;
+
+      const mainImage = root.querySelector("[data-main-image]");
+      const mainTitle = root.querySelector("[data-main-title]");
+      const mainDesc = root.querySelector("[data-main-desc]");
+      const current = root.querySelector("[data-current]");
+      const listButtons = Array.from(root.querySelectorAll("[data-slide-list] button"));
+      const thumbButtons = Array.from(root.querySelectorAll("[data-thumb-strip] button"));
+      const prev = root.querySelector("[data-prev]");
+      const next = root.querySelector("[data-next]");
+      let activeIndex = 0;
+      let timer = null;
+
+      const activate = (index) => {
+        activeIndex = (index + listButtons.length) % listButtons.length;
+        const button = listButtons[activeIndex];
+        mainImage.src = button.dataset.src;
+        mainImage.alt = button.dataset.title;
+        mainTitle.textContent = button.dataset.title;
+        mainDesc.textContent = button.dataset.desc;
+        current.textContent = String(activeIndex + 1);
+
+        listButtons.forEach((item, itemIndex) => {
+          item.classList.toggle("is-active", itemIndex === activeIndex);
+        });
+        thumbButtons.forEach((item, itemIndex) => {
+          item.classList.toggle("is-active", itemIndex === activeIndex);
+        });
+      };
+
+      const restart = () => {
+        window.clearInterval(timer);
+        timer = window.setInterval(() => activate(activeIndex + 1), 5200);
+      };
+
+      listButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activate(Number(button.dataset.index));
+          restart();
+        });
+      });
+      thumbButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activate(Number(button.dataset.index));
+          restart();
+        });
+      });
+      prev.addEventListener("click", () => {
+        activate(activeIndex - 1);
+        restart();
+      });
+      next.addEventListener("click", () => {
+        activate(activeIndex + 1);
+        restart();
+      });
+
+      root.addEventListener("mouseenter", () => window.clearInterval(timer));
+      root.addEventListener("mouseleave", restart);
+      restart();
+    })();
+  </script>
+</body>
+</html>
